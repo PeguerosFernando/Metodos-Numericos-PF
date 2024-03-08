@@ -14,11 +14,18 @@ def NewtonP (f, df, a, N=100, TOL=1e-8, E="A"):
         E (str, optional): Error utilizado, por defecto "Absoluto".
 
     Salida:
-        solucuión: solución encontrada
+        solución: solución encontrada
     """
     a=float(a)
     n = 0
     while (n < N):
+        try:
+            t=1/(Eval(df,a))
+        except:
+            print("¡Introduzca otra semilla!\nSe ha intentado dividir por 0")
+            break
+        else:
+            continue
         b = a-((Eval(f,a))/(Eval(df,a)))
 
         if (Errores(E)(b,a)) < TOL:
@@ -47,6 +54,13 @@ def NewtonI (f, df, I, N=100 , TOL=1e-8, N_S=20, E="A"):
     for a in Sol:
         n=0
         while (n < N):
+            try:
+                t=1/(Eval(df,a))
+            except:
+                print("¡Introduzca otra semilla!\nSe ha intentado dividir por 0")
+                break
+            else:
+                continue
             b = a-(Eval(f,a)/Eval(df,a))
             if (Errores(E)(b,a)) < TOL:
                 AllSol.append(b)
