@@ -22,6 +22,7 @@ def Secante (f, I, N=100, TOL=1e-8, E="A"):
             t=1/(fb-fa)
         except:
             print("¡Intente un nuevo intervalo!\nSe ha intentado dividr por 0")
+            break
         p = b-fb*(b-a)/(fb-fa)
         if (Errores(E)(p,b) < TOL):
             return p
